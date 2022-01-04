@@ -1,13 +1,13 @@
+import mpv
 import RPi.GPIO as GPIO
 import time
-import os
-import subprocess
-from subprocess import Popen
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
-img = Popen(['cvlc', '-f', '--loop', '--no-video-title-show', '--no-audio', 'black.png'])
+player = mpv.MPV(ytdl=True, input_default_bindings=True, input_vo_keyboard=True)
+player.fullscreen = True
+player.play('init.mp4')
 
 while True:     
     GPIO.wait_for_edge(4, GPIO.RISING)
@@ -21,8 +21,8 @@ while True:
     
     if lenght > 5:
         print('long press, exit')
-        command = "sudo killall -s 9 omxplayer.bin"
-        os.system(command)
+        player.play('init.mp4')
     else:
         print('short press, play video')
-        omxp = Popen(['omxplayer', '-s', '-o', 'hdmi', '2nightflightFinalfinal.mp4'])
+        player['loop'] = 'inf'
+        player.play('test.webm')
