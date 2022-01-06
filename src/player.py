@@ -2,7 +2,7 @@ import mpv
 import RPi.GPIO as GPIO
 import os
 import time
-import tkinter as tk
+import tkinter
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
@@ -23,12 +23,12 @@ while True:
     if lenght > 5:
         os.system("sudo reboot")
     else:
-        root = tk.Tk()
+        root = tkinter.Tk()
         player = mpv.MPV()
         player.play('video.mp4')
         player.wait_for_playback()
         del player
-        tk.mainloop()
+        tkinter.mainloop()
         os.system("clear")
 
 
