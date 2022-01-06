@@ -1,7 +1,6 @@
 import mpv
 
-player = mpv.MPV()
-player.fullscreen = True
-player.play('init.mp4')
+player = mpv.MPV(ytdl=True)
+player.play('test.webm')
 player.wait_for_playback()
 
