@@ -8,13 +8,22 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 os.system("clear")
 
-while True:  # Run forever
+while True:
+    GPIO.wait_for_edge(10, GPIO.RISING)
+    print('pressed')
+    start = time.time()
+    time.sleep(0.2)
 
-    if GPIO.input(10) == GPIO.HIGH:
+    while GPIO.input(4) == GPIO.HIGH:
+        time.sleep(0.1)
+    lenght = time.time() - start
+
+    if lenght > 5:
+        os.system("sudo reboot")
+    else:
         player = mpv.MPV()
         player.play('test.webm')
         player.wait_for_playback()
         del player
         time.sleep(2)
-
 
