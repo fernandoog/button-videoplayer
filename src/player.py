@@ -6,7 +6,7 @@ import time
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-player = mpv.MPV()
+
 os.system("clear")
 
 while True:
@@ -25,6 +25,7 @@ while True:
         os.system("sudo reboot")
     else:
         time.sleep(0.2)
+        player = mpv.MPV()
         player.play('video.mp4')
         player.wait_for_playback()
         player.quit()
