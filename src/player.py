@@ -29,4 +29,5 @@ while True:
         player.play('video.mp4')
         player.wait_for_playback()
         player.quit()
+        del player
         os.system("clear")
