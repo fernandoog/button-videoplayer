@@ -1,5 +1,6 @@
 import mpv
 import RPi.GPIO as GPIO
+import os
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
@@ -10,6 +11,6 @@ while True:  # Run forever
     if GPIO.input(10) == GPIO.HIGH:
         player.play('test.webm')
         player.wait_for_playback()
-        command = "clear"
+        os.system("clear")
 
 
