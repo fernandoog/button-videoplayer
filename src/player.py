@@ -22,7 +22,7 @@ while True:
         os.system("sudo reboot")
     else:
         player = mpv.MPV()
-        player.play('test.webm')
+        player.play('video.mp4')
         player.wait_for_playback()
         del player
         time.sleep(2)
