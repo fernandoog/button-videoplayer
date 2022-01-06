@@ -2,11 +2,12 @@ import mpv
 import RPi.GPIO as GPIO
 import os
 import time
-import tkinter
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+def my_log(loglevel, component, message):
+    print('[{}] {}: {}'.format(loglevel, component, message))
 os.system("clear")
 
 while True:
@@ -23,12 +24,10 @@ while True:
     if lenght > 5:
         os.system("sudo reboot")
     else:
-        root = tkinter.Tk()
-        player = mpv.MPV()
+        player = mpv.MPV(log_handler=my_log, ytdl=True, input_default_bindings=True, input_vo_keyboard=True)
         player.play('video.mp4')
         player.wait_for_playback()
         del player
-        tkinter.mainloop()
         os.system("clear")
 
 
