@@ -11,6 +11,5 @@ os.system("clear")
 while True:  # Run forever
     if GPIO.input(10) == GPIO.HIGH:
         player.play('test.webm')
-        os.system("clear")
-
+    player.play('init.pm4')
 
