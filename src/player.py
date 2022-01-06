@@ -10,7 +10,6 @@ player = mpv.MPV(ytdl=True)
 while True:  # Run forever
     if GPIO.input(10) == GPIO.HIGH:
         player.play('test.webm')
-        player.wait_for_playback()
         os.system("clear")
 
 
