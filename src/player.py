@@ -14,7 +14,7 @@ while True:
     start = time.time()
     time.sleep(0.2)
 
-    while GPIO.input(4) == GPIO.HIGH:
+    while GPIO.input(10) == GPIO.HIGH:
         time.sleep(0.1)
     lenght = time.time() - start
 
