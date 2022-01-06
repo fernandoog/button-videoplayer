@@ -7,6 +7,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 player = mpv.MPV(ytdl=True, input_default_bindings=True, input_vo_keyboard=True)
 player.fullscreen = True
+player.play('init.mp4')
 
 while True:     
 
