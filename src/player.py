@@ -13,6 +13,6 @@ player.wait_for_playback()
 while True:  # Run forever
     if GPIO.input(10) == GPIO.HIGH:
         player.play('test.webm')
-        time.sleep(10)
+        player.wait_for_playback()
 
 
